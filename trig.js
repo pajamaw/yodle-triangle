@@ -59,5 +59,5 @@ function triPuzzle(numb){
 
   var sum = la.reduce(add, 0);
   console.log("The maximum possible sum is " + sum);
-  console.log("The length of the array is " + la.length);
+  console.log("The length of the answer array is " + la.length);
 }
