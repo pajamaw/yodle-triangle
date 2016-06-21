@@ -1,27 +1,22 @@
 fs = require('fs');
 
 //filepath = '/Users/pjwickwire/Development/Interviews/yodle-triangle/triangle.txt'
-//Here I save the text of the file into a variable
-function getFile(filepath){
-
-};
-
-//Here i pass the newly saved variable theNumbers to create an array
-//that sorts every line of the pyramid into its own string element
-function makeManageable(filepath){
-  lineByLine = [];
+//Here I use the data callback of the readFile method to utitlize the actual file.
+function getAnswer(filepath){
   fs.readFile(filepath, 'utf8', function (err,data) {
     if (err) {
       return console.log(err);
     }
     //console.log(data);
-    //var theNumbers = data;
-    //console.log(theNumbers);
-  lineByLine.push(data.split(/\n/));
-
+    triPuzzle(makeFinished(makeManageable(data)));
   });
-  console.log(lineByLine);
-  return lineByLine;
+}
+//Here i pass the newly saved variable theNumbers to create an array
+//that sorts every line of the pyramid into its own string element
+function makeManageable(file){
+    var lineByLine = file.split(/\n/);
+    console.log(lineByLine);
+    return lineByLine;
   //iterate through each line then split each line into another array by \s
 }
 //Next we pass  lineByLine , and iterate through each element sorting every element into a new array based on how many specific numbers are
@@ -63,14 +58,6 @@ function triPuzzle(numb){
   console.log(la);
 
   var sum = la.reduce(add, 0);
-  //return sum;
-  console.log("The sum of the numbers is " + sum);
+  console.log("The maximum possible sum is " + sum);
   console.log("The length of the array is " + la.length);
 }
-
-function completePuzzle(filepath){
-
-  triPuzzle(makeFinished(makeManageable(filepath)));
-}
-
-//completePuzzle('/Users/pjwickwire/Development/Interviews/yodle-triangle/triangle.txt')
