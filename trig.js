@@ -1,24 +1,25 @@
 fs = require('fs');
-//theNumbers = null;
-//lineByLine = null;
-//lineBy2 = [];
+
 //filepath = '/Users/pjwickwire/Development/Interviews/yodle-triangle/triangle.txt'
-//Here I save the text of the file into a global variable
+//Here I save the text of the file into a variable
 function getFile(filepath){
+
+};
+
+//Here i pass the newly saved variable theNumbers to create an array
+//that sorts every line of the pyramid into its own string element
+function makeManageable(filepath){
+  lineByLine = [];
   fs.readFile(filepath, 'utf8', function (err,data) {
     if (err) {
       return console.log(err);
     }
     //console.log(data);
-    theNumbers = data;
-  });
-  return theNumbers;
-};
+    //var theNumbers = data;
+    //console.log(theNumbers);
+  lineByLine.push(data.split(/\n/));
 
-//Here i pass the newly saved variable theNumbers to create an array
-//that sorts every line of the pyramid into its own string element
-function makeManageable(triangletxt){
-  lineByLine = triangletxt.split(/\n/);
+  });
   console.log(lineByLine);
   return lineByLine;
   //iterate through each line then split each line into another array by \s
@@ -28,7 +29,7 @@ function makeManageable(triangletxt){
 //it will also give us extra elements of white space - but that's fine as it won't mess up the
 //actual method.
 function makeFinished(array){
-  lineBy2 = [];
+  var lineBy2 = [];
   for(i = 0; i < array.length; i++ ){
     console.log(array[i].split(/\s/));
     lineBy2.push(array[i].split(/\s/));
@@ -62,12 +63,14 @@ function triPuzzle(numb){
   console.log(la);
 
   var sum = la.reduce(add, 0);
+  //return sum;
   console.log("The sum of the numbers is " + sum);
   console.log("The length of the array is " + la.length);
 }
 
 function completePuzzle(filepath){
-  triPuzzle(makeFinished(makeManageable(getFile(filepath))));
+
+  triPuzzle(makeFinished(makeManageable(filepath)));
 }
 
 //completePuzzle('/Users/pjwickwire/Development/Interviews/yodle-triangle/triangle.txt')
